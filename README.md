@@ -1,2 +1,105 @@
 # FedMGDA-M
-This is the code for paper accelerating communication-efficient federated multi-task learning with personalization and Fairness
+This is the code for paper accelerating communication-efficient federated multi-task learning with personalization and Fairness.
+
+
+## requirement
+
+> Pillow == 8.1.2
+> tqdm
+> scikit-learn == 0.21.3
+> numpy == 1.19.0
+> torch == 1.2.0
+> matplotlib == 3.1.1
+> networkx == 2.5.1
+> cvxpy
+> torchvision
+> tensorboard
+
+## Dataset for experiment
+
+### emnist
+
+The following table summarizes the datasets and models
+
+| Dataset  | Task                              | Model                     | distribution                   |
+| -------- | --------------------------------- | ------------------------- | ------------------------------ |
+| EMNIST   | Handwritten character recognition | 2-layer CNN + 2-layer FFN | pathological split with n=2    |
+| CIFAR100 | Image classification              | MobileNet-v2              | pachinko alloaction, alpha=0.1 |
+
+we implement four accelerated methods including
+[FedMom](https://arxiv.org/pdf/2002.02090.pdf)
+[FedNAG](https://ieeexplore.ieee.org/abstract/document/9891808)
+[FedAdam](https://arxiv.org/pdf/2003.00295.pdf)
+
+[FastSlowMo](https://ieeexplore.ieee.org/abstract/document/9813376)
+
+&#x20;and **FedMGDA-Mom**, where we adapt the Mom tin FedMom o FedMGDA
+
+See the `README.md` files of respective dataset, i.e., `data/$DATASET`,
+for instructions on generating data
+
+## Training
+
+Run on one dataset, with a specific  choice of federated learning method.
+Specify the name of the dataset (experiment), the used method, and configure all other
+hyper-parameters (see all hyper-parameters values in the appendix of the paper)
+
+#### synchronous
+
+```train
+python3  python run_experiment.py cifar100 FedAvg \
+    --n_learners 1 \
+    --n_rounds 500 \
+    --bz 128 \
+    --lr 0.01 \
+    --log_freq 10 \
+    --device cuda \
+    --optimizer sgd \
+    --seed 1234 \
+    --logs_root ./logs \
+    --verbose 1
+```
+
+The test and training accuracy and loss will be saved in the specified log path.
+
+## Evaluation
+
+We give instructions to run experiments on CIFAR-100 dataset as an example
+(the same holds for the other datasets). You need first to go to
+`./data/cifar100`, follow the instructions in `README.md` to download and partition
+the dataset.
+
+### Average performance of personalized models
+
+Run the following scripts, this will generate tensorboard logs that you can interact with to make plots or get the
+values.
+
+```eval
+# run FedMom
+echo "Run FedMGDA-Mom"
+python run_experiment.py --experiment cifar100 --method FedMom --n_learners 1 --n_rounds 500 --bz 128 --lr 0.01  --local_E 4 --sampling_rate 0.1  --beta 0.9\
+ --log_freq 2 --device cuda:0 --optimizer sgd --seed 1234 --verbose 1
+ 
+
+# run FedNAG
+echo "Run FedNAG"
+python run_experiment.py --experiment cifar100 --method FedNAG --n_learners 1 --n_rounds 500 --bz 128 --lr 0.01  --local_E 4 --sampling_rate 0.1  --beta 0.9\
+ --log_freq 2 --device cuda:0 --optimizer nag_sgd --seed 1234 --verbose 1
+ 
+ # run FedAdam
+echo "Run FedAdam"
+python run_experiment.py --experiment cifar100 --method FedAdam --n_learners 1 --n_rounds 500 --bz 128 --lr 0.01  --local_E 4 --sampling_rate 0.1  --mu 0.9 \ --beta 0.99 --gamma 0.001
+ --log_freq 2 --device cuda:0 --optimizer sgd --seed 1234 --verbose 1
+ 
+# run FedMGDA-Mom
+echo "Run FedMGDA-Mom"
+python run_experiment.py --experiment cifar100 --method FedMGDA-M --n_learners 1 --n_rounds 500 --bz 128 --lr 0.01  --local_E 4 --sampling_rate 0.1  --beta 0.9\
+ --log_freq 2 --device cuda:0 --optimizer sgd --seed 1234 --verbose 1
+ 
+# run FastSlowMo
+echo "Run FastSlowMo"
+python run_experiment.py --experiment cifar100 --method FastSlowMo --n_learners 1 --n_rounds 500 --bz 128 --lr 0.01  --local_E 4 --sampling_rate 0.1 --gamm 0.9 \
+--beta 0.9 --log_freq 2 --device cuda:0 --optimizer fastslowmo_sgd --seed 1234 --verbose 1
+```
+
+可根据不同的beta 和localE进行调整
