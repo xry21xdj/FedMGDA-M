@@ -1,0 +1,10 @@
+```
+python generate_data.py \
+    --n_tasks 100 \
+    --pachinko_allocation_split \
+    --alpha 0.1 \
+    --beta 10 \
+    --s_frac 1.0 \
+    --tr_frac 0.8 \
+    --seed 12345    
+```
