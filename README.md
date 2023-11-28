@@ -33,8 +33,8 @@ The following table summarizes the datasets and models
 | -------- | --------------------------------- | ------------------------- | ------------------------------ |
 | EMNIST   | Handwritten character recognition | 2-layer CNN + 2-layer FFN | pathological split with n=2    |
 | CIFAR100 | Image classification              | MobileNet-v2              | pachinko alloaction, alpha=0.1 |
-CIFAR10| Image Classfication| VGG16|
-Tiny ImageNet| Image classification|RestNet18|
+|CIFAR10   | Image Classfication               | VGG16                     | pathological split with n=2    |
+|Tiny ImageNet| Image classification           |RestNet18                  |pathological split with n=10    |
 
 
 
