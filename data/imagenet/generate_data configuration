@@ -1,0 +1,1 @@
+run generate_data.py --pathological_split --seed 1234 --n_shards 10 --n_tasks 40
