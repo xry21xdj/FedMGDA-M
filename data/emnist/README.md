@@ -14,7 +14,7 @@ the dataset will be split as in
 For basic usage, `run generate_data.py` with a choice of the following arguments:
 
 - ```--n_tasks```: number of tasks/clients, written as integer
-- ```--n_shards''': number of shards
+- ```--n_shards```: number of shards
 - ``` ---pathological_split```: split manner
 - ```--s_frac```: fraction of the dataset to be used; default=``0.2``  
 - ```--tr_frac```: train set proportion for each task; default=``0.8``
