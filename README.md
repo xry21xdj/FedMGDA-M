@@ -45,26 +45,11 @@ for instructions on generating data
 
 ## Training
 
-Run on one dataset, with a specific  choice of federated learning method.
+Run on one dataset first to get the data, with a specific  choice of federated learning method.
 Specify the name of the dataset (experiment), the used method, and configure all other
-hyper-parameters (see hyper-parameters values in the  paper)
+hyper-parameters (see hyper-parameters values in the  paper). 
 
-#### synchronous
 
-```train
-python3  python run_experiment.py cifar100 FedAvg \
-    --n_learners 1 \
-    --n_rounds 500 \
-    --bz 128 \
-    --lr 0.01 \
-    --log_freq 10 \
-    --device cuda \
-    --optimizer sgd \
-    --seed 1234  \
-    --verbose 1
-```
-
-The test and training accuracy and loss will be saved in the specified log path.
 
 ## Evaluation
 
