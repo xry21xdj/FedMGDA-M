@@ -1,1 +1,0 @@
-the code used to generate the data are as follows: run generate_data.py --n_tasks 100 --seed 12345 --alpha 0.1 --pathological_split
