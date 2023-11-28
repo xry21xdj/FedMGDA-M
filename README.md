@@ -1,5 +1,5 @@
 # FedMGDA-M
-This is the code for paper accelerating communication-efficient federated multi-task learning with personalization and Fairness.
+This is the code for paper : ++Accelerating communication-efficient federated multi-task learning with personalization and fairness++.
 
 we proposes a local momentum based method FedMGDA-M, FedAvg-M , and its derivatives FedAvg-M-Mom, FedMGDA-M-Mom. Besides, we compared them  with other accelerated methods including:
 [FedMom](https://arxiv.org/pdf/2002.02090.pdf)
