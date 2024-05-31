@@ -25,8 +25,6 @@ we proposes a local momentum based method FedMGDA-M, FedAvg-M , and its derivati
 
 ## Dataset for experiment
 
-### emnist
-
 The following table summarizes the datasets and models
 
 | Dataset  | Task                              | Model                     | distribution                   |
@@ -119,3 +117,8 @@ python  run_experiment.py --experiment cifar100 --method FedGLOMO --n_learners 1
 
 ```
 
+## Acknowledgments
+
+I would like to thank the following open-source project for their framework, which I referred to during the development of this project:
+
+- [FedEM](https://github.com/omarfoq/FedEM)
