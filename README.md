@@ -1,16 +1,26 @@
 # FedMGDA-M
-This is the code for paper : [Accelerating communication-efficient federated multi-task learning with personalization and fairness](https://ieeexplore.ieee.org/document/10552428).
+This repository is the official implementation of : [Accelerating communication-efficient federated multi-task learning with personalization and fairness](https://ieeexplore.ieee.org/document/10552428), published at "IEEE Transactions on Parallel and Distributed Systems" in 2024. The appendix of this paper can be found in research gate [full paper with appendix](https://www.researchgate.net/publication/381310999_Accelerating_Communication-efficient_Federated_Multi-Task_Learning_With_Personalization_and_Fairness).
 
 
 
-we proposes a local momentum based method FedMGDA-M, FedAvg-M , and its derivatives FedAvg-M-Mom, FedMGDA-M-Mom. Besides, we compared them  with other accelerated methods including:
+- we proposes a local momentum based method FedMGDA-M, FedAvg-M , and its derivatives FedAvg-M-Mom, FedMGDA-M-Mom. Besides, we compared them  with other accelerated methods including:
 [FedMom](https://arxiv.org/pdf/2002.02090.pdf)
 [FedNAG](https://ieeexplore.ieee.org/abstract/document/9891808)
 [FedAdam](https://arxiv.org/pdf/2003.00295.pdf)
 [DOMO](https://ojs.aaai.org/index.php/AAAI/article/view/20853)
 [FastSlowMo](https://ieeexplore.ieee.org/abstract/document/9813376)
 [Mime](https://arxiv.org/abs/2008.03606)
-[FedMoS](https://liyuqingwhu.github.io/lyq/papers/INFOCOM2023.pdf)
+[FedMoS](https://liyuqingwhu.github.io/lyq/papers/INFOCOM2023.pdf).
+The code for these methods is included in this repository. 
+
+- We also built a tiny real-world test platform with Raspberry Pi 4, as shown in the Figure. If you are interested in implementing the FL in this IoT-based platform, please feel free to reach out: renyou.xie@unsw.edu.au;xierenyou21@163.com;
+  
+<!--![FL_platform](https://github.com/user-attachments/assets/14f05bb2-f0a5-465a-af64-bf37a9300508) -->
+
+<div align="center">
+<img src="https://github.com/user-attachments/assets/14f05bb2-f0a5-465a-af64-bf37a9300508" width="650" height="450" alt="FL Platform">
+</div>
+
 
 ## requirement
 
@@ -124,3 +134,19 @@ python  run_experiment.py --experiment cifar100 --method FedGLOMO --n_learners 1
 I would like to thank the following open-source project for their framework, which I referred to during the development of this project:
 
 - [FedEM](https://github.com/omarfoq/FedEM)
+
+## Citation
+If you use our code or wish to refer to our results, please use the following BibTex entry:
+```
+@ARTICLE{10552428,
+  author={Xie, Renyou and Li, Chaojie and Zhou, Xiaojun and Dong, Zhaoyang},
+  journal={IEEE Transactions on Parallel and Distributed Systems}, 
+  title={Accelerating Communication-Efficient Federated Multi-Task Learning With Personalization and Fairness}, 
+  year={2024},
+  volume={35},
+  number={11},
+  pages={2239-2253},
+  keywords={Data models;Convergence;Internet of Things;Costs;Training;Task analysis;Multitasking;Communication efficiency;data heterogeneity;federated learning;local momentum technique;multi-task learning},
+  doi={10.1109/TPDS.2024.3411815}}
+
+```
